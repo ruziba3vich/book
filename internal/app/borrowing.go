@@ -7,7 +7,7 @@ import (
 )
 
 type Borrowing struct {
-	ID         uuid.UUID `json:"id"`
+	ID         int       `json:"id"`
 	UserId     uuid.UUID `json:"userId"`
 	BookId     uuid.UUID `json:"bookId"`
 	BorrowedAt time.Time `json:"borroweAt"`
