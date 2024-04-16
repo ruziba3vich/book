@@ -10,6 +10,8 @@ BEGIN
             id SERIAL PRIMARY KEY,
             book_id UUID,
             user_id UUID,
+            borrowed_at TIMESTAMP,
+            returned_at TIMESTAMP,
             FOREIGN KEY (book_id) REFERENCES books(id),
             FOREIGN KEY (user_id) REFERENCES users(id)
         );
