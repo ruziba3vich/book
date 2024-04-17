@@ -6,8 +6,7 @@ import (
     "github.com/dgrijalva/jwt-go"
     "github.com/google/uuid"
 )
-
-var jwtSecret = []byte("your-secret-key")
+var jwtSecret = []byte("dostonbek")
 
 func GenerateJWTToken(userID uuid.UUID) (string, error) {
 	expirationDays := 60
