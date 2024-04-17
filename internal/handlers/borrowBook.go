@@ -27,13 +27,14 @@ func ReturnBook(c *gin.Context, db *sql.DB) {
 	var brr app.BookBorrowRequest
 	if err := c.ShouldBindJSON(&brr); err != nil {
 		log.Fatal(err)
+		return
 	}
 	err := service.ReturnBook(brr, db)
 	if err != nil {
 		log.Fatal(err)
-	} else {
-		c.JSON(http.StatusOK, gin.H{
-			"messgae": "Book has been returned",
-		})
+		return
 	}
+	c.JSON(http.StatusOK, gin.H{
+		"messgae": "Book has been returned",
+	})
 }

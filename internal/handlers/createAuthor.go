@@ -16,10 +16,12 @@ func CreateAuthor(c *gin.Context, db *sql.DB) {
 
 	if err := c.ShouldBindJSON(&auth); err != nil {
 		log.Fatal(err)
+		return
 	}
 	returnedObj, err := service.CreateAuthor(auth, db)
 	if err != nil {
 		log.Fatal(err)
+		return
 	}
 	c.JSON(http.StatusOK, returnedObj)
 }
