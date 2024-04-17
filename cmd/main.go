@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
 	"github.com/ruziba3vich/book/internal/handlers"
 )
 
@@ -34,9 +35,11 @@ func main() {
 	}
 	defer db.Close()
 
-	dbs := []string{"users.sql", "authors.sql", "books.sql", "borrowed_books.sql"}
+	dbs := []string{"users", "authors", "books", "borrowed_books"}
 	for _, dbName := range dbs {
-		sqlFile, err := os.ReadFile(dbName)
+		name := "../internal/db/" + dbName + ".sql"
+		sqlFile, err := os.ReadFile(name)
+		// fmt.Println(string(sqlFile))
 		if err != nil {
 			PrintError(err)
 		}

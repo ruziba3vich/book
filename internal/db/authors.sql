@@ -6,7 +6,7 @@ BEGIN
         WHERE  table_schema = 'public'
         AND    table_name = 'authors'
     ) THEN
-        CREATE TABLE users (
+        CREATE TABLE authors (
             id UUID,
             fullname VARCHAR(100),
             PRIMARY KEY (id)

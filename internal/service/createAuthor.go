@@ -10,9 +10,9 @@ import (
 )
 
 func CreateAuthor(auth app.Author, db *sql.DB) (responseObj *app.Author, err error) {
-	id := uuid.New()
+	auth.ID = uuid.New()
 	query := "INSERT INTO authors(id, fullname) VALUES ($1, $2) RETURNING id, fullname;"
-	row := db.QueryRow(query, id, auth.Fullname)
+	row := db.QueryRow(query, auth.ID, auth.Fullname)
 	if err := row.Scan(&responseObj.ID, &responseObj.Fullname); err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			log.Fatal("returning an empty line :", err)
