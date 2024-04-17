@@ -53,6 +53,9 @@ func main() {
 	router.POST("/user/create-author", func(c *gin.Context) {
 		handlers.CreateAuthor(c, db)
 	})
+	router.POST("/user/register", func(c *gin.Context) {
+		handlers.Register(c, db)
+	})
 
 	addr := "localhost:7777"
 	log.Println("Server listening on", addr)
